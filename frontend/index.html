@@ -1,0 +1,149 @@
+<!--
+  Proyecto 19junio — Sitio web interactivo
+  Copyright (c) 2026 Marina Heezemans
+  Licensed under the MIT License. See LICENSE for details.
+  Built with dbv-specs-ops · https://github.com/davidbuenov/dbv-specs-ops
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boquerón Plan — Guía Local de Málaga con IA</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="logo-section">
+        <span class="logo-emoji">🐟</span>
+        <div>
+          <h1>Boquerón Plan</h1>
+          <p class="tagline">Tu guía local de Málaga con IA y salero</p>
+        </div>
+      </div>
+      <div class="header-badge">
+        <span class="badge-dot"></span>
+        <span>El Boquerón está activo</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-container">
+    
+    <!-- Left Column: Chat Area -->
+    <section class="chat-section">
+      <div class="chat-header">
+        <div class="agent-profile">
+          <div class="agent-avatar">🐟</div>
+          <div>
+            <h3>El Boquerón</h3>
+            <p>Guía malagueño de pura cepa</p>
+          </div>
+        </div>
+        <button id="clear-chat-btn" class="text-btn" title="Reiniciar conversación">Limpiar chat</button>
+      </div>
+
+      <!-- Chat History -->
+      <div id="chat-messages" class="chat-messages">
+        <!-- Messages loaded dynamically -->
+      </div>
+
+      <!-- Chat Input Area -->
+      <form id="chat-form" class="chat-form">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="chat-input" 
+            placeholder="Pregúntale a El Boquerón (ej: ¿Qué plan hay mañana gratis?)..." 
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="send-btn" aria-label="Enviar mensaje">
+            <svg viewBox="0 0 24 24" class="send-icon">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Right Column: Sidebar (Filters & Calendar) -->
+    <aside class="sidebar-section">
+      
+      <!-- Panel 1: Manual Filters -->
+      <div class="sidebar-panel filters-panel">
+        <h2>🔍 Filtrar planes</h2>
+        
+        <div class="filter-group">
+          <label>Categoría</label>
+          <div class="category-chips">
+            <button class="chip active" data-category="todos">Todos</button>
+            <button class="chip" data-category="música">🎵 Música</button>
+            <button class="chip" data-category="deportes">⚽ Deportes</button>
+            <button class="chip" data-category="festivales">🎪 Festivales</button>
+            <button class="chip" data-category="culturales">🏛️ Culturales</button>
+          </div>
+        </div>
+
+        <div class="filter-row">
+          <div class="filter-group half">
+            <label for="price-filter">Precio máximo</label>
+            <select id="price-filter">
+              <option value="all">Cualquier precio</option>
+              <option value="0">Gratis 🎁</option>
+              <option value="15">Hasta 15 €</option>
+              <option value="30">Hasta 30 €</option>
+              <option value="50">Hasta 50 €</option>
+            </select>
+          </div>
+
+          <div class="filter-group half">
+            <label for="date-filter">Cuándo</label>
+            <select id="date-filter">
+              <option value="all">Cualquier fecha</option>
+              <option value="today">Hoy</option>
+              <option value="tomorrow">Mañana</option>
+              <option value="weekend">Este fin de semana</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Internal Calendar / Agenda -->
+      <div class="sidebar-panel agenda-panel">
+        <div class="panel-header">
+          <h2>📅 Mi Agenda</h2>
+          <span id="agenda-count" class="agenda-count">0 planes</span>
+        </div>
+        
+        <!-- Interactive Session Calendar -->
+        <div id="mini-calendar" class="mini-calendar">
+          <!-- Calendar grid loaded dynamically -->
+        </div>
+
+        <!-- Scheduled Plans List -->
+        <div id="agenda-list" class="agenda-list">
+          <div class="empty-agenda">
+            <span class="empty-icon">📅</span>
+            <p>Aún no has agendado ningún plan. ¡Dile a El Boquerón lo que te apetece o haz clic en "Agendar Plan" en las tarjetas de eventos!</p>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- Script setup (ES6 Modules) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

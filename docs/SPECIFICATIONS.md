@@ -1,75 +1,103 @@
-# 📋 Especificaciones: [Nombre del Proyecto]
+# 📋 Especificaciones: Boquerón Plan (Guía Local IA de Málaga)
 
 > **Fase:** `/spec` (Especificación)
-> **Estado:** En Definición / Validado
-> **Última Revisión:** [Fecha]
+> **Estado:** Validado
+> **Última Revisión:** 2026-06-19
+> **Proyecto:** Boquerón Plan
 
 ---
 
 ## 🎯 1. Contexto y Objetivos
 *Basado en la filosofía de "entender el problema antes de proponer la solución".*
 
-- **Problema:** [Describe el dolor o necesidad que motiva este proyecto. ¿Qué está roto o qué falta?]
-- **Objetivo (Éxito):** [¿Cómo sabremos que este proyecto ha tenido éxito? Define un resultado tangible.]
+- **Problema:** La dispersión de información sobre eventos (conciertos, partidos de fútbol, festivales, teatro) en Málaga dificulta encontrar planes de manera rápida. Además, existe fricción al tener que agendar manualmente los planes encontrados en el calendario personal del usuario (Google, Apple, Outlook).
+- **Objetivo (Éxito):** Crear una web interactiva donde los usuarios puedan chatear con un asistente de IA con la personalidad y el acento de un guía local malagueño ("Boquerón"). La IA sugerirá planes personalizados según presupuesto, fecha y gustos, y permitirá añadirlos directamente al calendario del usuario mediante archivos `.ics` generados al instante, visualizándolos en un calendario interno de la web.
 
 ## 👥 2. Usuarios y Escenarios
 *Identifica para quién construimos y en qué situaciones usarán el sistema.*
 
-- **Perfil de Usuario:** [Ej: Desarrollador, Administrador de Hospital, Usuario final].
+- **Perfil de Usuario:**
+  - Turistas que visitan Málaga y buscan planes auténticos.
+  - Residentes locales (malagueños) que quieren descubrir conciertos, partidos de fútbol del Málaga CF o festivales de fin de semana.
+  - Estudiantes universitarios con presupuestos limitados.
 - **Escenarios Clave:**
-  - *Escenario A:* [Ej: "El usuario necesita consultar el historial médico en menos de 2 segundos"].
-  - *Escenario B:* [Ej: "El sistema debe alertar si hay una colisión de horarios"].
+  - *Escenario A (Chat conversacional):* Un usuario le dice al bot: "Quiero ir a un concierto este sábado con mis amigos, tenemos unos 20€ de presupuesto cada uno". El bot responde con salero malagueño y le muestra tarjetas de conciertos que coinciden con esos criterios.
+  - *Escenario B (Filtro rápido):* Un usuario que prefiere no escribir utiliza el panel lateral de filtros para seleccionar "Fútbol" y la fecha de "Este fin de semana", mostrando inmediatamente el próximo partido en La Rosaleda.
+  - *Escenario C (Agendar en calendario):* El usuario ve un plan que le gusta ("Concierto de rock en el Wizink... o en la Sala Trinchera de Málaga"). Hace clic en "Agendar", se genera un archivo `.ics` y se descarga para añadirse a su Google Calendar en un toque. El evento aparece en la vista de calendario integrada en la propia web.
 
 ## ✨ 3. Funcionalidades Principales (Requisitos)
 *El "Qué" del sistema. Estas tareas se trasladarán luego a `task.md`.*
 
-- [ ] **Funcionalidad A:** [Descripción breve y criterio de aceptación].
-- [ ] **Funcionalidad B:** [Descripción breve y criterio de aceptación].
+- [ ] **Chat Conversacional con IA (Personaje Malagueño):**
+  - Interfaz de chat de burbujas fluidas.
+  - Persona: Un malagueño dicharachero y acogedor que utiliza expresiones locales ("boquerón", "pechá", "guiri", "alohe", "perita").
+  - Envío y recepción de mensajes, mostrando un indicador de "escribiendo...".
+- [ ] **Tarjetas de Eventos Dinámicas:**
+  - Generación de tarjetas basadas en la conversación y la API de eventos.
+  - Campos: Imagen del evento, Título, Fecha y Hora, Precio (o indicativo de Gratis), Ubicación e Enlace de compra si aplica.
+- [ ] **Filtros Rápidos:**
+  - Selector de categoría (Música/Conciertos, Deportes, Festivales, Culturales).
+  - Rango de precios y selector de fechas (Hoy, Fin de semana, Próxima semana).
+- [ ] **Exportación a Calendario (.ics universal):**
+  - Botón "Agendar" en cada tarjeta.
+  - Generación dinámica al vuelo de un archivo `.ics` compatible con Google Calendar, Apple Calendar y Outlook.
+- [ ] **Vista de Calendario Interno:**
+  - Un componente de calendario (vista mensual/semanal) que muestra los planes que el usuario ha decidido agendar en la sesión actual.
+- [ ] **Mapa de Eventos (Opcional/Futuro):**
+  - Visualización geográfica de los eventos recomendados usando Leaflet/OpenStreetMap.
+- [ ] **Página "Sobre el personaje":**
+  - Breve sección dedicada a explicar quién es "El Boquerón" y la motivación del proyecto académico de IA.
+
+### 3.1. Agent Readiness Checklist (Proyectos Web)
+*Configuración de descubrimiento para agentes inteligentes (Web Agent Readiness):*
+- [ ] **robots.txt**: Configurar en la raíz con directivas `Content-Signal: ai-train=no, search=yes, ai-input=yes` y enlace al sitemap de IA.
+- [ ] **llms.txt**: Crear mapa de contenidos del proyecto en Markdown para facilitar la lectura del asistente y la navegación agéntica.
+- [ ] **auth.md**: Describir las instrucciones de acceso para bots y el simulador de chat de eventos.
+- [ ] **Metadatos en `.well-known/`**:
+  - `api-catalog`: Catálogo RFC 9727 con endpoints para bots.
+  - `oauth-protected-resource` y `oauth-authorization-server`: Marcadores de endpoints.
+  - `http-message-signatures-directory`: Directorio de firma para llamadas seguras.
+- [ ] **Agent & MCP Cards**:
+  - `.well-known/agent.json`: Declaración de la identidad y capacidades del agente local.
+  - `.well-known/mcp.json`: Tarjeta de conexión del servidor MCP si un agente desea interactuar con nuestra API de eventos de Málaga.
+- [ ] **agent-skills/**:
+  - `index.json`: Índice de habilidades que el agente externo puede consultar.
+  - `get-events.md` / `recommend-plans.md`: Guías Markdown de habilidades que describen cómo interactuar y llamar a nuestras herramientas de recomendación.
+- [ ] **Negociación de Markdown**: Configurar el backend para retornar la versión Markdown cuando la cabecera `Accept: text/markdown` esté presente en la consulta.
 
 ## 🏗️ 4. Propuesta de Solución Técnica (Resumen)
 *Enlace directo con `ARCHITECTURE.md`.*
 
-- **Enfoque:** [Breve descripción de la solución técnica elegida].
-- **Dependencias Críticas:** [Ej: API externa, Servidor MCP específico].
-- **Oportunidades de Skills y MCPs**: [Analizar si el proyecto se beneficia de la creación de un servidor MCP local para conectar con la lógica interna, o de paquetes de habilidades dinámicas (skills/) para facilitar la orquestación del agente].
-- **Sistema de Diseño:** Si el proyecto tiene interfaz de usuario, ver `docs/DESIGN.md` para tokens de color, tipografía y componentes.
-
-### 4.1. Agent Readiness Checklist (Proyectos Web)
-*Si la configuración de Agent Readiness (Web) está activa, documentar las tareas de descubrimiento para agentes inteligentes:*
-- [ ] **robots.txt**: Configurar con directiva `Content-Signal: ai-train=no, search=yes, ai-input=yes` y ruta al sitemap.
-- [ ] **llms.txt**: Crear mapa de contenidos en Markdown para agilizar la lectura semántica de la IA.
-- [ ] **auth.md**: Describir los procesos de registro y acceso para los bots.
-- [ ] **Metadatos en `.well-known/`**: Crear `api-catalog`, `oauth-protected-resource`, `oauth-authorization-server` y `http-message-signatures-directory`.
-- [ ] **Agent & MCP Cards**: Declarar la identidad del bot (`agent.json`) y la conexión al servidor MCP (`mcp.json`).
-- [ ] **agent-skills/**: Definir el índice `index.json` y los manifiestos `SKILL.md` de habilidades del proyecto.
-- [ ] **Negociación de Markdown**: Configurar el enrutamiento para retornar texto plano Markdown con la cabecera `Accept: text/markdown` y definir las cabeceras `Link` HTTP en el hosting.
+- **Enfoque:** Monorepo con frontend en **React (Vite)** y backend en **Python (FastAPI)**. React manejará el estado dinámico (mensajes, tarjetas de eventos, calendario) y FastAPI servirá como puente seguro con las APIs de IA (OpenAI GPT o Anthropic Claude) y APIs de eventos, protegiendo las API Keys.
+- **APIs y Datos:**
+  - **Ticketmaster API (Discovery):** Para conciertos, festivales y eventos en Málaga.
+  - **Football-data.org (u otra API gratuita deportiva/scraping local):** Para consultar partidos del Málaga CF en La Rosaleda.
+  - **OpenAI API / Anthropic API:** Conexión con LLM configurando un System Prompt específico (Acento de Málaga, expresiones, límites de respuesta).
+- **Calendario (.ics):** Generación de ficheros `.ics` directamente en frontend usando la librería `ics` de JavaScript o mediante una función helper nativa en JS para evitar dependencias innecesarias.
+- **Sistema de Diseño:** Estilo limpio, fresco y mediterráneo con fondo blanco predominante, toques de azul mediterráneo en cabeceras y elementos interactivos, y acentos puntuales de naranja cálido para precios y alertas. Ver detalles en `docs/DESIGN.md`.
 
 ## 🚫 5. Fuera de Alcance (Out of Scope)
-*Vital para evitar el "scope creep" (crecimiento descontrolado del proyecto).*
+*Evitar el "scope creep".*
 
-- [ ] [Funcionalidad o aspecto que NO se abordará en esta fase/versión].
+- [ ] Sistema de compras de entradas real (se redirigirá a enlaces externos como Ticketmaster).
+- [ ] Autenticación OAuth completa de cuentas de Google/Microsoft (se sustituye por el estándar de exportación universal `.ics` que no requiere credenciales).
+- [ ] Autenticación de usuario con base de datos para producción (el estado se mantendrá local en la sesión del navegador / LocalStorage).
 
 ## ⚠️ 6. Riesgos y Mitigación
-*Anticipar problemas es de ingenieros senior.*
+*Anticipar problemas.*
 
-- **Riesgo:** [Ej: La API externa tiene límites de tasa (Rate limiting)].
-  - **Mitigación:** [Ej: Implementar un sistema de caché local].
-- **Riesgo de Seguridad y Privacidad (IA/Datos):** [Ej: Fuga de secretos, inyección de código vulnerable por parte del agente, o alucinación de paquetes dependientes].
-  - **Mitigación:** [Ej: Implementar hooks deterministas de pre-commit con escaneo de secrets como gitleaks, o auditoría obligatoria de dependencias en /code-simplify].
-- **Riesgo de Consumo de Contexto de IA / Mal Rastreo de Bots:** [Ej: Los agentes inteligentes consumen demasiados tokens interpretando código HTML complejo o se pierden en los formularios de registro].
-  - **Mitigación:** [Ej: Implementar un archivo llms.txt con el mapa web en Markdown y configurar la negociación dinámica de contenido en formato text/markdown].
+- **Riesgo:** Límites de peticiones (Rate limits) o expiración de claves en las APIs externas (Ticketmaster, OpenAI).
+  - **Mitigación:** Almacenamiento en caché de los eventos consultados en el backend durante 1 hora y provisión de un conjunto de eventos mockup locales en caso de caída o desconexión de la API.
+- **Riesgo de Seguridad en LLMs (Prompt Injection):** Que los usuarios manipulen el chat para desviar el bot de Málaga a otros temas o realicen inyección de prompts.
+  - **Mitigación:** System Prompt robusto con reglas estrictas de retorno ("Si te preguntan algo ajeno a Málaga o eventos, reconduce la conversación amablemente con acento malagueño").
+- **Riesgo de Consumo de Contexto por IA:** El chat conversacional de eventos genera muchas llamadas al LLM.
+  - **Mitigación:** Mantener un historial de chat corto en la sesión (últimos 10 mensajes) para controlar el tamaño del context window.
 
 ## ❓ 7. Preguntas Abiertas
-*Cosas que aún no sabemos o decisiones que dependen del usuario.*
-
-- [ ] ¿Necesitamos soporte offline desde el primer día?
-- [ ] ¿Qué volumen de datos esperamos manejar en el primer mes?
+- [ ] ¿Es necesario usar la API real de fútbol o podemos mockear la agenda del Málaga CF al ser una lista de partidos fija y conocida? (Se sugiere mockup para evitar registros de APIs deportivas complejas).
+- [ ] ¿Qué proveedor de LLM se utilizará para la personalidad del Boquerón? (Se propone la API de OpenAI GPT-4o-mini o Gemini 1.5 Flash por coste y latencia).
 
 ## 🧪 8. Criterios de Evaluación y Evals (No Deterministas)
-*Define las rúbricas y métricas de calidad para evaluar la salida de componentes no deterministas (IA, prompts, etc.) integrados en la fase /test.*
-
-- [ ] **Métricas de Output:** [Ej: Precisión de respuesta, conformidad de formato JSON, ausencia de alucinaciones].
-- [ ] **Métricas de Trayectoria:** [Ej: Eficiencia en el uso de herramientas MCP, límite de llamadas a la API].
-
----
-**Instrucción para la IA:** No pases a la fase `/plan` hasta que las "Preguntas Abiertas" críticas hayan sido resueltas o tengan un camino de solución definido.
+- [ ] **Conformidad de Formato:** El LLM debe retornar el plan propuesto en una estructura JSON limpia para que el frontend renderice las tarjetas adecuadamente.
+- [ ] **Filtro de Localización:** Evaluaremos que al menos el 95% de las recomendaciones correspondan a ubicaciones en la provincia de Málaga.
+- [ ] **Rúbrica de Personalidad (Eval):** El asistente debe incluir modismos malagueños en cada respuesta sin perder la coherencia de la recomendación de eventos.

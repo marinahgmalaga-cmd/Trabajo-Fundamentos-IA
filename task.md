@@ -1,38 +1,46 @@
-# 📝 Registro de Tareas: dbv-specs-ops v2.1.0 (Agent Readiness Integration)
+# 📝 Registro de Tareas: Boquerón Plan
 
 ## 🏗 In Progress / En Curso
 
-*(No active tasks)*
+- [/] **Fase 3: Construcción (`/build`)**
+  - [/] Configuración de Entornos y Monorepo
+  - [x] Configurar entorno virtual `backend/venv` e instalar dependencias.
+  - [ ] Crear estructura de carpetas en `frontend/` (css, js, assets).
 
 ## ⏳ Pending / Pendientes (Backlog)
 
-*(No tasks pending)*
+### 1. Backend (FastAPI - Python)
+- [ ] Implementar la carga de variables de entorno y CORS en `main.py`.
+- [ ] Implementar el servicio `ticketmaster.py` con filtros por Málaga, caché en memoria y mockups.
+- [ ] Implementar el servicio de LLM `llm.py` con el System Prompt con acento de Málaga.
+- [ ] Crear las rutas de API (`/api/chat` y `/api/events`).
 
-## ✅ Completed / Completadas
+### 2. Frontend (HTML5 / Vanilla JS)
+- [ ] Configurar los estilos CSS en `frontend/css/styles.css` aplicando los tokens (blanco, azul, naranja).
+- [ ] Crear la maqueta HTML principal `frontend/index.html`.
+- [ ] Implementar el módulo `frontend/js/api.js` para conectar con FastAPI.
+- [ ] Implementar el módulo `frontend/js/chat.js` para renderizar burbujas y tarjetas.
+- [ ] Implementar el módulo `frontend/js/calendar.js` para renderizar el calendario y exportar `.ics`.
+- [ ] Implementar el módulo `frontend/js/app.js` para orquestar filtros y estado global.
 
-- [x] **Fase 2: Planificación y Preparación**
-  - [x] Crear `implementation_plan.md` y actualizar `task.md` con las tareas activas.
-  - [x] Obtener aprobación final del usuario sobre los cambios propuestos.
-- [x] **Fase 3: Construcción (`/build`)**
-  - [x] Modificar `project.config.md` para añadir la propiedad de `Agent Readiness` y subir la versión a `2.1.0`.
-  - [x] Actualizar `docs/MASTER_PROMPT.md` con las directivas de Agent Readiness en bootstrap, `/spec`, `/build` y `/ship`.
-  - [x] Actualizar `docs/SPECIFICATIONS.md` con el checklist y el riesgo asociado.
-  - [x] Actualizar `docs/ARCHITECTURE.md` con la sección de interfaz externa bajo el arnés.
-  - [x] Corregir la contradicción en `README.md` (reemplazando `/plan` por `/spec` como comando inicial).
-  - [x] Registrar los cambios en `CHANGELOG.md` y `docs/UPGRADE_PROMPT.md`.
-- [x] **Fase 4: Pruebas y Verificación (`/test`)**
-  - [x] Validar la sintaxis de todos los archivos y plantillas modificados.
-- [x] **Fase 5: Simplificar (`/code-simplify`)**
-  - [x] Auditar coherencia y lenguaje del prompt.
-- [x] **Fase 6: Entrega (`/ship`)**
-  - [x] Completar `walkthrough.md` detallando las novedades de la v2.1.0.
-  - [x] Publicar la versión en `CHANGELOG.md` con fecha de hoy y corregir los links de comparación.
+### 3. Pruebas y Verificación (`/test`)
+- [ ] Escribir y ejecutar tests unitarios de backend con pytest.
+
+### 4. Auditoría de Seguridad y Simplificación (`/code-simplify`)
+- [ ] Verificar la ausencia de claves API expuestas e inyección de código.
+
+### 5. Entrega y Agent Readiness (`/ship`)
+- [ ] Crear archivos `robots.txt`, `llms.txt` y `auth.md`.
+- [ ] Configurar metadatos en `.well-known/` (`agent.json`, `mcp.json`, `api-catalog`).
+- [ ] Crear las guías de habilidades en `agent-skills/`.
+- [ ] Generar los scripts de arranque/parada multiplataforma (`start.sh`, `start.cmd`, `stop.sh`, `stop.cmd`).
+- [ ] Completar `walkthrough.md` y proponer versión/commit git.
 
 ---
 
 ## 🔄 Context Snapshot / Snapshot de Contexto
 
-> **Last update / Última actualización:** 2026-06-17
-> **Exact point / Punto exacto:** Versión 2.1.0 (Agent Readiness Integration) finalizada y documentada en walkthrough y changelog.
-> **Pending / Pendiente:** Ejecutar commit y tag en el repositorio local.
-> **Next step / Próximo paso:** Informar al usuario humano del éxito de la release y ofrecer los comandos Git.
+> **Last update / Última actualización:** 2026-06-19
+> **Exact point / Punto exacto:** Backend venv configurado con dependencias. Frontend cambiado de React a Vanilla JS para adaptarse a la ausencia de Node.js.
+> **Pending / Pendiente:** Iniciar el desarrollo del Backend.
+> **Next step / Próximo paso:** Crear archivos backend/app/main.py and config.py.
