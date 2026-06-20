@@ -8,18 +8,22 @@
 import os
 from dotenv import load_dotenv
 
+# Obtener la ruta absoluta al directorio backend (donde está el .env)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+env_path = os.path.join(BASE_DIR, ".env")
+
 # Cargar variables de entorno del archivo .env si existe
-load_dotenv()
+load_dotenv(dotenv_path=env_path)
 
 class Settings:
-    OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")
+    GEMINI_API_KEY: str = os.getenv("GEMINI_API_KEY", "")
     TICKETMASTER_API_KEY: str = os.getenv("TICKETMASTER_API_KEY", "")
     PORT: int = int(os.getenv("PORT", "8000"))
     HOST: str = os.getenv("HOST", "127.0.0.1")
 
     @property
     def is_llm_configured(self) -> bool:
-        return bool(self.OPENAI_API_KEY)
+        return bool(self.GEMINI_API_KEY)
 
     @property
     def is_ticketmaster_configured(self) -> bool:

@@ -7,7 +7,7 @@
 # =============================================================================
 # stop.sh — Detener backend y frontend
 
-echo "🛑 Boquerón Plan — Deteniendo servidores..."
+echo "🛑 Boquerones a la calle — Deteniendo servidores..."
 
 if [ -f /tmp/boqueron_backend.pid ]; then
   BACKEND_PID=$(cat /tmp/boqueron_backend.pid)

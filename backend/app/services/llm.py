@@ -73,7 +73,7 @@ def generate_local_response(user_message: str, events: List[Dict[str, Any]]) -> 
     }
 
 def chat_with_boqueron(user_message: str, chat_history: List[Dict[str, str]] = []) -> Dict[str, Any]:
-    """Envía la consulta del usuario a OpenAI con el contexto de eventos disponibles y la personalidad de 'El Boquerón'."""
+    """Envía la consulta del usuario a Gemini con el contexto de eventos y la personalidad de 'El Boquerón'."""
     events = get_events()
     
     # Si la clave no está configurada, usar el generador local
@@ -81,36 +81,41 @@ def chat_with_boqueron(user_message: str, chat_history: List[Dict[str, str]] = [
         return generate_local_response(user_message, events)
         
     try:
-        from openai import OpenAI
-        client = OpenAI(api_key=settings.OPENAI_API_KEY)
+        from google import genai
+        
+        client = genai.Client(api_key=settings.GEMINI_API_KEY)
         
         # Formatear el listado de eventos para enviarlo al modelo
         events_str = ""
         for e in events:
             events_str += f"- ID: {e['id']} | Título: {e['title']} | Categoría: {e['category']} | Fecha: {e['date']} | Hora: {e['time']} | Precio: {e['price']}{e['currency']} | Lugar: {e['location']}\n"
-            
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "system", "content": f"LISTA DE EVENTOS REALES DISPONIBLES EN MÁLAGA:\n{events_str}"}
-        ]
+        
+        # Construir el prompt completo con historial de conversación
+        full_prompt = SYSTEM_PROMPT + "\n\n"
+        full_prompt += f"LISTA DE EVENTOS REALES DISPONIBLES EN MÁLAGA:\n{events_str}\n\n"
         
         # Agregar historial (últimos 8 mensajes para no saturar tokens)
-        for h in chat_history[-8:]:
-            messages.append({"role": h["role"], "content": h["content"]})
-            
-        # Agregar mensaje actual
-        messages.append({"role": "user", "content": user_message})
+        if chat_history:
+            full_prompt += "HISTORIAL DE CONVERSACIÓN RECIENTE:\n"
+            for h in chat_history[-8:]:
+                role_label = "Usuario" if h["role"] == "user" else "El Boquerón"
+                full_prompt += f"{role_label}: {h['content']}\n"
+            full_prompt += "\n"
         
-        # Llamar a OpenAI (usamos gpt-4o-mini por coste y velocidad)
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=messages,
-            response_format={"type": "json_object"},
-            temperature=0.7,
-            timeout=10
+        full_prompt += f"MENSAJE ACTUAL DEL USUARIO: {user_message}\n\n"
+        full_prompt += "Responde SOLO con el JSON válido, sin texto adicional ni bloques de código."
+        
+        # Llamar a Gemini con respuesta JSON
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=full_prompt,
+            config={
+                "response_mime_type": "application/json",
+                "temperature": 0.7,
+            }
         )
         
-        content = response.choices[0].message.content
+        content = response.text
         result = json.loads(content)
         return {
             "message": result.get("message", "¡Buenas, boquerón!"),
@@ -118,5 +123,5 @@ def chat_with_boqueron(user_message: str, chat_history: List[Dict[str, str]] = [
         }
         
     except Exception as e:
-        print(f"Error llamando a la API de OpenAI: {e}. Usando generador local.")
+        print(f"Error llamando a la API de Gemini: {e}. Usando generador local.")
         return generate_local_response(user_message, events)

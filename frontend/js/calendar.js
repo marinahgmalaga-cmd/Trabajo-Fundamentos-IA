@@ -30,7 +30,7 @@ export function downloadICS(event) {
   const icsContent = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//Boquerón Plan//Málaga Events//ES',
+    'PRODID:-//Boquerones a la calle//Málaga Events//ES',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     'BEGIN:VEVENT',
@@ -39,7 +39,7 @@ export function downloadICS(event) {
     `DTSTART:${dtStart}`,
     `DTEND:${dtEnd}`,
     `SUMMARY:${event.title}`,
-    `DESCRIPTION:${event.description}\\n\\n${priceStr}\\n\\nPlan agendado con Boquerón Plan — Tu guía local de Málaga.`,
+    `DESCRIPTION:${event.description}\\n\\n${priceStr}\\n\\nPlan agendado con Boquerones a la calle — Tu guía local de Málaga.`,
     `LOCATION:${event.location}`,
     'STATUS:CONFIRMED',
     'END:VEVENT',

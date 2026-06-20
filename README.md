@@ -18,9 +18,7 @@
 <a name="about"></a>
 ## 📌 Sobre el proyecto
 
-Proyecto 19junio es un sitio web interactivo.
-
-**Construido con:** HTML, CSS, JavaScript.
+**Boquerones a la calle** es una aplicación web interactiva que actúa como un guía local de Málaga propulsado por IA. Permite a los usuarios descubrir planes y eventos (conciertos, fútbol, cultura) charlando de manera natural con "El Boquerón", un asistente virtual con acento malagueño.
 
 ---
 

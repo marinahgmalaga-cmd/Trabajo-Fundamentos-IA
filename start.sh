@@ -10,7 +10,7 @@
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "🐟 Boquerón Plan — Iniciando..."
+echo "🐟 Boquerones a la calle — Iniciando..."
 echo "================================="
 
 # Arrancar el backend FastAPI en segundo plano

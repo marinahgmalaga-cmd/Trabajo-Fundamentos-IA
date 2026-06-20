@@ -1,39 +1,28 @@
-# 📝 Registro de Tareas: Boquerón Plan
+# 📝 Registro de Tareas: Boquerones a la calle
 
-## 🏗 In Progress / En Curso
+## ✅ Completed / Completadas
 
-- [/] **Fase 3: Construcción (`/build`)**
-  - [/] Configuración de Entornos y Monorepo
-  - [x] Configurar entorno virtual `backend/venv` e instalar dependencias.
-  - [ ] Crear estructura de carpetas en `frontend/` (css, js, assets).
+- [x] **Fase 2: Planificación y Aprobación**
+- [x] **Fase 3: Construcción (`/build`)**
+  - [x] Configurar entorno virtual `backend/venv` e instalar dependencias (FastAPI, uvicorn, openai, requests, pydantic).
+  - [x] Crear estructura de carpetas en `frontend/` (css, js, assets).
+  - [x] Backend: `config.py`, `main.py`, `services/ticketmaster.py`, `services/llm.py`, `routes/chat.py`, `routes/events.py`.
+  - [x] Frontend: `index.html`, `css/styles.css`, `js/api.js`, `js/chat.js`, `js/calendar.js`, `js/app.js`.
+  - [x] Scripts multiplataforma: `start.sh`, `stop.sh`, `start.cmd`, `stop.cmd`.
+  - [x] Git commit `cf8294e` — "feat: implementación inicial de Boquerones a la calle v0.1.0"
 
 ## ⏳ Pending / Pendientes (Backlog)
 
-### 1. Backend (FastAPI - Python)
-- [ ] Implementar la carga de variables de entorno y CORS en `main.py`.
-- [ ] Implementar el servicio `ticketmaster.py` con filtros por Málaga, caché en memoria y mockups.
-- [ ] Implementar el servicio de LLM `llm.py` con el System Prompt con acento de Málaga.
-- [ ] Crear las rutas de API (`/api/chat` y `/api/events`).
-
-### 2. Frontend (HTML5 / Vanilla JS)
-- [ ] Configurar los estilos CSS en `frontend/css/styles.css` aplicando los tokens (blanco, azul, naranja).
-- [ ] Crear la maqueta HTML principal `frontend/index.html`.
-- [ ] Implementar el módulo `frontend/js/api.js` para conectar con FastAPI.
-- [ ] Implementar el módulo `frontend/js/chat.js` para renderizar burbujas y tarjetas.
-- [ ] Implementar el módulo `frontend/js/calendar.js` para renderizar el calendario y exportar `.ics`.
-- [ ] Implementar el módulo `frontend/js/app.js` para orquestar filtros y estado global.
-
-### 3. Pruebas y Verificación (`/test`)
+### 1. Pruebas y Verificación (`/test`)
 - [ ] Escribir y ejecutar tests unitarios de backend con pytest.
 
-### 4. Auditoría de Seguridad y Simplificación (`/code-simplify`)
+### 2. Auditoría de Seguridad y Simplificación (`/code-simplify`)
 - [ ] Verificar la ausencia de claves API expuestas e inyección de código.
 
-### 5. Entrega y Agent Readiness (`/ship`)
+### 3. Entrega y Agent Readiness (`/ship`)
 - [ ] Crear archivos `robots.txt`, `llms.txt` y `auth.md`.
 - [ ] Configurar metadatos en `.well-known/` (`agent.json`, `mcp.json`, `api-catalog`).
 - [ ] Crear las guías de habilidades en `agent-skills/`.
-- [ ] Generar los scripts de arranque/parada multiplataforma (`start.sh`, `start.cmd`, `stop.sh`, `stop.cmd`).
 - [ ] Completar `walkthrough.md` y proponer versión/commit git.
 
 ---
@@ -41,6 +30,6 @@
 ## 🔄 Context Snapshot / Snapshot de Contexto
 
 > **Last update / Última actualización:** 2026-06-19
-> **Exact point / Punto exacto:** Backend venv configurado con dependencias. Frontend cambiado de React a Vanilla JS para adaptarse a la ausencia de Node.js.
-> **Pending / Pendiente:** Iniciar el desarrollo del Backend.
-> **Next step / Próximo paso:** Crear archivos backend/app/main.py and config.py.
+> **Exact point / Punto exacto:** v0.1.0 construida y commiteada (commit cf8294e). Backend FastAPI + Frontend HTML/JS operativos y verificados con curl.
+> **Pending / Pendiente:** Tests automatizados (pytest), code-simplify y fase /ship con Agent Readiness.
+> **Next step / Próximo paso:** Ejecutar `./start.sh` y verificar la web en http://127.0.0.1:8080.

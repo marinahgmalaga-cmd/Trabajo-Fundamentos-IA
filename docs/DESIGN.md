@@ -1,9 +1,9 @@
-# 🎨 Sistema de Diseño: Boquerón Plan
+# 🎨 Sistema de Diseño: Boquerones a la calle
 
 > **Fase:** `/spec` (Especificación Visual)
 > **Estado:** Validado
 > **Última Revisión:** 2026-06-19
-> **Aplica a:** Web Boquerón Plan
+> **Aplica a:** Web Boquerones a la calle
 
 ---
 
@@ -16,7 +16,7 @@
 # DESIGN TOKENS — Legibles por la IA y por máquina
 # ────────────────────────────────────────────────
 version: alpha
-name: "Boquerón Plan"
+name: "Boquerones a la calle"
 description: "Estilo limpio, fresco y mediterráneo con fondo blanco predominante, toques de azul mediterráneo en cabeceras y elementos interactivos, y acentos puntuales de naranja cálido para precios y alertas."
 
 # COLORES
@@ -130,7 +130,7 @@ components:
 
 ## Visión General
 
-La interfaz de **Boquerón Plan** ofrece una experiencia extremadamente limpia, luminosa y fresca. El blanco es el protagonista absoluto de los fondos y contenedores, logrando una sensación de claridad y orden. Los acentos en azul mediterráneo (`#2B6CB0`) estructuran la jerarquía (headers, burbujas de diálogo del agente y botones de acción), mientras que un naranja cálido y suave (`#ED8936`) destaca detalles puntuales como precios o alertas para evitar que el sitio adquiera un carácter frío o corporativo.
+La interfaz de **Boquerones a la calle** ofrece una experiencia extremadamente limpia, luminosa y fresca. El blanco es el protagonista absoluto de los fondos y contenedores, logrando una sensación de claridad y orden. Los acentos en azul mediterráneo (`#2B6CB0`) estructuran la jerarquía (headers, burbujas de diálogo del agente y botones de acción), mientras que un naranja cálido y suave (`#ED8936`) destaca detalles puntuales como precios o alertas para evitar que el sitio adquiera un carácter frío o corporativo.
 
 ---
 

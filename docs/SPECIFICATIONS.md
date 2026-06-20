@@ -1,9 +1,9 @@
-# 📋 Especificaciones: Boquerón Plan (Guía Local IA de Málaga)
+# 📋 Especificaciones: Boquerones a la calle (Guía Local IA de Málaga)
 
 > **Fase:** `/spec` (Especificación)
 > **Estado:** Validado
 > **Última Revisión:** 2026-06-19
-> **Proyecto:** Boquerón Plan
+> **Proyecto:** Boquerones a la calle
 
 ---
 

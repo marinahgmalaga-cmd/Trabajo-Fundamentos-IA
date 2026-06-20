@@ -1,4 +1,4 @@
-# 🏗 Arquitectura Técnica: Boquerón Plan
+# 🏗 Arquitectura Técnica: Boquerones a la calle
 
 > **Fase:** `/plan` (Planificación Técnica)
 > **Estado:** Validado

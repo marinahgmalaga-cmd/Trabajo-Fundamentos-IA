@@ -7,7 +7,7 @@
 :: =============================================================================
 :: start.cmd — Arrancar backend (FastAPI) y frontend (HTTP estático)
 
-echo Boqueron Plan - Iniciando...
+echo Boquerones a la calle - Iniciando...
 echo =================================
 
 :: Arrancar backend FastAPI

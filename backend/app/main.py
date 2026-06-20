@@ -11,7 +11,7 @@ from app.routes import chat, events
 from app.config import settings
 
 app = FastAPI(
-    title="Boquerón Plan API",
+    title="Boquerones a la calle API",
     description="API del asistente conversacional de eventos de Málaga",
     version="1.0.0"
 )
@@ -33,7 +33,7 @@ app.include_router(events.router)
 def read_root():
     return {
         "status": "online",
-        "name": "Boquerón Plan API",
+        "name": "Boquerones a la calle API",
         "description": "Busca y agenda eventos en Málaga chateando con el guía local Boquerón",
         "llm_configured": settings.is_llm_configured,
         "ticketmaster_configured": settings.is_ticketmaster_configured

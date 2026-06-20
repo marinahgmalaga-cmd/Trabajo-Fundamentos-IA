@@ -17,7 +17,7 @@ rollback_strategy:
   - En caso de error crítico, revertir al commit inicial de bootstrap con `git reset --hard a863282`.
 ---
 
-# Plan de Implementación: Boquerón Plan
+# Plan de Implementación: Boquerones a la calle
 
 Plan para construir una aplicación web interactiva que permite a los usuarios buscar eventos en Málaga a través de un chat con un guía local de IA ("El Boquerón"), filtrar planes manualmente y exportarlos en formato `.ics` para su calendario personal.
 

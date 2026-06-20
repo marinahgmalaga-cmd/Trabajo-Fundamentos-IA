@@ -7,7 +7,7 @@
 :: =============================================================================
 :: stop.cmd — Detener todos los servidores
 
-echo Boqueron Plan - Deteniendo servidores...
+echo Boquerones a la calle - Deteniendo servidores...
 taskkill /FI "WindowTitle eq Boqueron-Backend*" /T /F 2>nul
 taskkill /FI "WindowTitle eq Boqueron-Frontend*" /T /F 2>nul
 echo Hasta luego, boqueron!
