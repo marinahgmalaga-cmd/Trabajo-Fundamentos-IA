@@ -20,8 +20,9 @@
 
 **Boquerones a la calle** es una aplicación web interactiva que actúa como un guía local de Málaga propulsado por IA. Permite a los usuarios descubrir planes y eventos (conciertos, fútbol, cultura) charlando de manera natural con "El Boquerón", un asistente virtual con acento malagueño.
 
-🎥 **[Ver vídeo de presentación en YouTube](https://youtu.be/KB7sdz-EzFU)**
+🎥 **Presentación del Proyecto:**
 
+[![Vídeo de presentación Boquerones a la calle](https://img.youtube.com/vi/KB7sdz-EzFU/maxresdefault.jpg)](https://youtu.be/KB7sdz-EzFU)
 ---
 
 <a name="requirements"></a>
